@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <body>
+            <h3>
+                <a href = "{{ url_for('show_all') }}">Show all records</a>
+            </h3>
+        <!-- Alert messages flash -->
+        {%- for message in get_flashed_messages() %}
+        <div class="alert alert-danger">
+            {{message}}
+        </div>
+        {%- endfor %}
+
+        <h3>Students (<a href = "{{ url_for('new') }}">Add Student</a>) (<a href = "{{ url_for('delete') }}">Delete 
+         and Search Student</a>) 
+            (<a href = "{{ url_for('email') }}">Mail Student</a>)
+        </h3>
+        <table>
+                <thead>
+                   <tr>
+                       <th style="padding: 20px;">Id</th>
+                      <th style="padding: 20px;">Name</th>
+                      <th style="padding: 20px;">City</th>
+                      <th style="padding: 20px;">Email</th>
+                    </tr>
+                </thead>
+       
+                <tbody>
+                   {% for student in students %}
+                    <tr>
+                         <td style="padding: 20px;">{{ student.id }}</td>
+                         <td style="padding: 20px;">{{ student.name }}</td>
+                         <td style="padding: 20px;">{{ student.city }}</td>
+                         <td style="padding: 20px;">{{ student.email }}</td>
+                    </tr>
+                   {% endfor %}
+                </tbody>
+             </table>
+    </body>
+</html>
